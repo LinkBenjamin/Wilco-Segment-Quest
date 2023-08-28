@@ -4,6 +4,7 @@ learningObjectives:
 hints:
 - "See here: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/"
 - "Our website is a standard React.js application.  You can find the <head> tag in the index.html file."
+- "The Segment snippet is on the dashboard page in your Segment workspace for the Javascript website source you created."
 startFlow:
   do:
   - actionId: bot_message

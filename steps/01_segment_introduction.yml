@@ -1,18 +1,19 @@
 id: segment_introduction
 learningObjectives: 
-- Learn what Segment is and how it works
+- Learn what Segment is and set it up to work with your website
 hints:
 - "Sign up here: https://app.segment.com/signup"
+- "Don't worry, you won't be charged for anything. Segment is completely free unless you have more than 10,000 identified users in a month, or unless you contact their sales team to unlock extra capabilities."
 startFlow:
   do:
   - actionId: bot_message
     params:
       person: keen
       messages:
-      - text: "Today we're going to connect our website to Segment."
-      - text: "If you're not familiar with Segment, here's a brief rundown: it's a customer data platform that acts as a bus for event streams from your customer-facing applications."
-      - text: "In addition, it builds customer profiles with the events so that you can get to know individual users' tendencies, even at massive scale, and personalize their experience with our brand."
-      - text: "First step: let's create a free Segment workspace [here](https://app.segment.com/signup)."
+      - text: "The first thing for you to start on is connecting our website to Twilio Segment."
+      - text: "Segment is a Customer Data Platform.  Think of it like a bus for event streams, with some superpowers."
+      - text: "In addition to collecting the trackable events from your various marketing channels, it identifies the user who performed the event and combines all of their event history into a profile that you can use to understand them better."
+      - text: "Your first step is to create a free Segment workspace [here](https://app.segment.com/signup)."
       - text: "Once you've created your account, :instruction[come back here and let me know when you're ready to continue.]"
 trigger:
   type: user_message
@@ -28,7 +29,7 @@ trigger:
           params:
             person: keen
             messages:
-            - text: "Great job!"
+            - text: "Great, let's proceed."
         - actionId: finish_step
       else:
         do:

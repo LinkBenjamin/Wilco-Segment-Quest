@@ -3,6 +3,8 @@ learningObjectives:
 - Learn how to track events in Segment
 
 hints:
+- "You probably want to add this to the **register.js** page.  Try looking in there."
+- "If you're using npm, there's a [package](https://www.npmjs.com/package/@segment/analytics-next) you can implement."
 - "To fire a new event, you can use the `analytics.track()` method. You can find more information about it in the [Segment documentation](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#track)."
 - "The event name should be `button_clicked` and the properties should be `{ button: 'sign up' }`"
 - "To find the event time, use the raw data of the event. You can find it in the debug tab of the source page."

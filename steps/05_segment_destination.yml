@@ -3,9 +3,11 @@ learningObjectives:
 - Learn how to connect source to destination in Segment
 
 hints:
-- "To connect a source to a destination, go to the catalog -> functions -> create function"
-- "To perform a post request to the webhook url, you can use the `fetch` method. You can find more information about it in the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)."
-- "To put data in the fetch request use: `body: JSON.stringify({event: 'segment_destination'})`"
+- "To connect a destination to your Segment workspace, look in Connections and choose 'Destinations' from your Segment workspace menu."
+- "Segment asks for an API Key and an Account Secret.  You can find them on the Project Settings menu of your Mixpanel account."
+- "Make sure you activate the destination in Segment, or the data won't flow to it!"
+- "You can use the Event Delivery dashboard in Segment (located inside the Destination) to see whether events are flowing."
+- "Look on the Events tab in Mixpanel to see whether they're received."
 
 startFlow:
   do:
@@ -14,11 +16,9 @@ startFlow:
       person: keen
       messages:
       - text: "OK, we have a source and some events, but we now need to connect it to a destination."
-      - text: "A destination is a place where you can send your data to, like Google Analytics, Amplitude, or Mixpanel."
-      - text: "We'll use a simple function as a destination. It will just log the events to the console."
-      - text: "In this function, once we have a new track event, we'll log it to the console. But we also create a new post request to the webhook URL."
-      - text: "This is the webhook url: https://engine.wilco.gg/users/${user.id}/event use post request with the following body: {\"event\": \"segment_destination\"}"
-      - text: "Once you have it, :instruction[trigger the event using the register button]"
+      - text: "A destination is a place where you can send your data, like Google Analytics, Amplitude, or Mixpanel. You can even use simple serverless function as a destination and host it directly within a paid Segment plan."
+      - text: "For our purposes today, we're going to connect the site to Mixpanel. If you don't already have one, request a [free account](https://mixpanel.com/register/) on Mixpanel's site."
+      - text: "Then create a Segment destination and get the data to flow to Mixpanel from the website."
 
 trigger:
   type: user_event
@@ -30,5 +30,5 @@ trigger:
       params:
         person: keen
         messages:
-        - text: "Awesome, we just manage to connect a source to a destination in Segment!"
+        - text: "Excellent work.  You can now see events generated in our website travel all the way through Segment to Mixpanel.  While this may not seem very efficient for a single destination tool, keep in mind that we have many tools in our stack that all need this same data.  Implementing each of them will be simple with Segment already connected."
     - actionId: finish_step
