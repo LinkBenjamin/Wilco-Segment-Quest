@@ -15,20 +15,31 @@ startFlow:
     params:
       person: keen
       messages:
-      - text: "OK, we have a source and some events, but we now need to connect it to a destination."
+      - text: "We have a source and some events... but the real value of this data is being able to pass it to destination tools."
       - text: "A destination is a place where you can send your data, like Google Analytics, Amplitude, or Mixpanel. You can even use simple serverless function as a destination and host it directly within a paid Segment plan."
       - text: "For our purposes today, we're going to connect the site to Mixpanel. If you don't already have one, request a [free account](https://mixpanel.com/register/) on Mixpanel's site."
-      - text: "Then create a Segment destination and get the data to flow to Mixpanel from the website."
+      - text: "Once you've created your account, :instruction[come back here and let me know.]"
 
 trigger:
-  type: user_event
+  type: user_message
   params: 
-    event: segment_destination
+    person: keen
   flowNode:
-    do:
-    - actionId: bot_message
-      params:
-        person: keen
-        messages:
-        - text: "Excellent work.  You can now see events generated in our website travel all the way through Segment to Mixpanel.  While this may not seem very efficient for a single destination tool, keep in mind that we have many tools in our stack that all need this same data.  Implementing each of them will be simple with Segment already connected."
-    - actionId: finish_step
+    if:
+      conditions:
+      - conditionId: is_user_message_text_ready_to_continue
+      then:
+        do:
+        - actionId: bot_message
+          params:
+            person: keen
+            messages:
+            - text: "Great, let's proceed."
+        - actionId: finish_step
+      else:
+        do:
+        - actionId: bot_message
+          params:
+            person: keen
+            messages:
+            - text: "I'm here, just let me know when you're ready to continue."

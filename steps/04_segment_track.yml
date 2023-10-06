@@ -36,7 +36,7 @@ trigger:
           params:
             person: keen
             messages:
-            - text: "Awesome, we just manage to track an event in Segment. Now let's move on to the next step."
+            - text: "Excellent work, we've now made events trackable in Segment. Let's move on to the next step."
         - actionId: finish_step
       else:
         do:

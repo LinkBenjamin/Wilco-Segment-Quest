@@ -13,6 +13,7 @@ steps:
 - segment_setup
 - segment_track
 - segment_destination
+- segment_mixpanel
 duration: 1.5
 skills:
 - frontend

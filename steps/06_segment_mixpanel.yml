@@ -1,0 +1,44 @@
+id: segment_mixpanel
+learningObjectives: 
+- Configure Mixpanel as a Segment Destination
+
+hints:
+- "Mixpanel requires 2 keys: a Project Token and a Secret Key.  You need both of those in the Segment configuration page."
+- "If you're having trouble getting data into the destination... did you remember to enable it in Segment?  New destinations are disabled by default."
+
+startFlow:
+  do:
+  - actionId: bot_message
+    params:
+      person: keen
+      messages:
+      - text: "Ok then, similar to the source setup, you'll need to create a Mixpanel destination in Segment."
+      - text: "See if you can find Mixpanel's destination in the catalog and add it to the Segment workspace."
+      - text: "When you've set it up, :instruction[Place the Project Token here]"
+
+trigger:
+  type: user_message
+  params: 
+    person: keen
+  flowNode:
+    if:
+      conditions:
+      - conditionId: text_match_regex
+        params:
+          text: "${userMessageText}"
+          regex: ".*[a-zA-Z0-9]{32}.*"
+      then:
+        do:
+        - actionId: bot_message
+          params:
+            person: keen
+            messages:
+            - text: "Excellent.  Now you should be able to see events pass from the website, to Segment, into Mixpanel."
+        - actionId: finish_step
+      else:
+        do:
+        - actionId: bot_message
+          params:
+            person: keen
+            messages:
+            - text: "Hmmm, that doesn't look like a valid API token. Try again."
